@@ -1,0 +1,2 @@
+1/ Angular services are to communicate with the API, and then injected into our components. This can be done in the components, as well, but we wante ach component to have only 1 particular task. Also, Angular services can reduce  te number of duplicate code if reused ove rdifferent components.
+2/ Component provide the logic for the HTMl view, and we want to keep them as simple as possible
