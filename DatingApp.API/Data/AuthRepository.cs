@@ -21,13 +21,13 @@ namespace DatingApp.API.Data
            if(user == null)
            return null;
 
-           if (!VerifyPasswordHash(password, user.Passwordhash, user.PasswordSalt))
+           if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
            return null;
 
            return user;
         }
 
-        private bool VerifyPasswordHash(string password, byte[] passwordhash, byte[] passwordSalt)
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             // with 'using' all of the code will be dispossed of once done with it
            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
@@ -35,7 +35,7 @@ namespace DatingApp.API.Data
                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
                for( int i=0; i < computedHash.Length; i++  )
                {
-                  if (computedHash[i] != passwordhash[i])
+                  if (computedHash[i] != passwordHash[i])
                   {
                       return false;
                   } 
@@ -48,7 +48,7 @@ namespace DatingApp.API.Data
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            user.Passwordhash = passwordHash;
+            user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
             await _context.User.AddAsync(user);
