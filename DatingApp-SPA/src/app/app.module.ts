@@ -20,10 +20,13 @@ import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
+<<<<<<< HEAD
 import { MembersCardComponent } from './members/members-card/members-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+=======
+>>>>>>> 3f2370d605989f1876e832d56d164d7c84eccd79
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -62,9 +65,13 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+<<<<<<< HEAD
       UserService,
       MemberDetailResolver,
       MemberListResolver
+=======
+      UserService
+>>>>>>> 3f2370d605989f1876e832d56d164d7c84eccd79
    ],
    bootstrap: [
       AppComponent
